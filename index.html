@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Form</title>
+</head>
+<body>
+    <h1>Enter Your Details</h1>
+    <form id="data-form" action="https://ayush64605.github.io/ssip4/" method="get">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="district">District:</label>
+        <input type="text" id="district" name="district" required><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="qrcode"></div>
+
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        document.getElementById('data-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const district = document.getElementById('district').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+
+            const data = `Name: ${name}, District: ${district}, City: ${city}, State: ${state}`;
+
+            // Generate a QR code that links to display.html
+            const qrLink = `https://ayush64605.github.io/ssip4/`;
+            const qrcode = new QRCode("qrcode", {
+                text: qrLink,
+                width: 128,
+                height: 128
+            });
+        });
+    </script>
+</body>
+</html>
